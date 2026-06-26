@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#FFFFFF;
+  --off-white:#FAFAF8;
+  --black:#0C0C0A;
+  --ink:#1A1A16;
+  --orange:#E8722A;
+  --orange-light:#F5975A;
+  --orange-pale:#FEF3EC;
+  --orange-mid:#C85D1A;
+  --muted:#888880;
+  --border:#E6E6E0;
+  --border-dark:#222220;
+}
+body{background:var(--white);color:var(--black);font-family:'Inter',sans-serif;line-height:1.6;font-size:14px}
+
+.eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);font-weight:500}
+
+/* HERO */
+.hero{background:var(--black);padding:88px 64px 0;text-align:center;position:relative;overflow:hidden}
+.hero-inner{max-width:860px;margin:0 auto}
+.hero .eyebrow{color:var(--orange-light)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,6vw,72px);font-weight:600;line-height:1.05;letter-spacing:-0.01em;color:var(--white);margin:22px 0 20px}
+.hero h1 em{font-style:italic;color:var(--orange-light)}
+.hero p{font-size:15px;color:rgba(255,255,255,0.45);max-width:460px;margin:0 auto;line-height:1.8}
+.score-strip{display:flex;justify-content:center;margin-top:64px;border-top:1px solid rgba(255,255,255,0.08)}
+.score-item{flex:1;max-width:200px;padding:36px 20px 32px;border-right:1px solid rgba(255,255,255,0.08);text-align:center}
+.score-item:last-child{border-right:none}
+.score-num{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;line-height:1;color:var(--orange)}
+.score-label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:8px}
+
+/* FINDINGS */
+.findings-wrap{background:var(--off-white);border-bottom:1px solid var(--border)}
+.findings-inner{max-width:960px;margin:0 auto;padding:72px 60px}
+.sec-head{margin-bottom:48px}
+.sec-head h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;line-height:1.12;margin-top:14px;color:var(--black)}
+.sec-head h2 em{font-style:italic;color:var(--orange)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border)}
+@media(max-width:640px){.grid-2{grid-template-columns:1fr}}
+.f-card{background:var(--white);padding:32px 28px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.f-card:nth-child(2n){border-right:none}
+.f-card:nth-last-child(-n+2){border-bottom:none}
+.badge{display:inline-block;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:4px 10px;font-weight:500;margin-bottom:16px}
+.b-warn{background:var(--orange-pale);color:var(--orange-mid)}
+.b-ok{background:#EFF8F2;color:#2A6B45}
+.f-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--border);line-height:1;margin-bottom:10px}
+.f-card h3{font-size:12px;font-weight:600;letter-spacing:0.05em;color:var(--ink);margin-bottom:10px;text-transform:uppercase}
+.f-card p{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* COST BAND */
+.cost-band{background:var(--orange);padding:64px 60px}
+.cost-band-inner{max-width:960px;margin:0 auto}
+.cost-band .eyebrow{color:rgba(0,0,0,0.5)}
+.cost-band h2{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:var(--black);line-height:1.15;margin:12px 0 28px}
+.cost-band p.lead{font-size:15px;color:rgba(0,0,0,0.55);line-height:1.8;max-width:580px;margin-bottom:44px}
+.cost-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:640px){.cost-cols{grid-template-columns:1fr}}
+.cost-col{border-top:1px solid rgba(0,0,0,0.15);padding-top:20px}
+.cost-col p{font-size:13px;color:rgba(0,0,0,0.55);line-height:1.75}
+.dash{font-size:20px;color:var(--black);margin-bottom:12px;font-weight:300}
+
+/* OFFER */
+.offer-wrap{max-width:960px;margin:0 auto;padding:72px 60px}
+.offer-card{border:1px solid var(--border);background:var(--white);overflow:hidden}
+.offer-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;padding:40px 44px 36px;border-bottom:1px solid var(--border)}
+.offer-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--black);margin-top:8px}
+.price-num{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:700;color:var(--orange);line-height:1}
+.price-num span{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:var(--muted)}
+.offer-cols{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+@media(max-width:640px){.offer-cols{grid-template-columns:1fr}}
+.o-col{padding:36px 44px}
+.o-col:first-child{border-right:1px solid var(--border)}
+.col-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:4px}
+.o-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.o-item:last-child{border-bottom:none}
+.tick{width:18px;height:18px;border:1.5px solid var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.tick span{font-size:8px;color:var(--orange);font-weight:700}
+.o-item strong{font-size:13px;font-weight:500;color:var(--ink);display:block;margin-bottom:3px}
+.o-item p{font-size:12px;color:var(--muted);line-height:1.65}
+.offer-foot{background:var(--black);padding:32px 44px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.val-note strong{display:block;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px}
+.val-note span{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:rgba(255,255,255,0.25);text-decoration:line-through}
+.guar{font-size:11px;color:rgba(255,255,255,0.25);margin-top:6px}
+.cta{background:var(--orange);color:var(--white);font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:18px 36px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.2s}
+.cta:hover{background:var(--orange-mid)}
+
+/* REASONS */
+.reasons-wrap{background:var(--off-white);border-top:1px solid var(--border)}
+.reasons-inner{max-width:960px;margin:0 auto;padding:72px 60px}
+.r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px}
+@media(max-width:640px){.r-grid{grid-template-columns:1fr}}
+.r-card .r-num{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:700;color:var(--border);line-height:1;margin-bottom:16px}
+.r-card h3{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.r-card p{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* STEPS */
+.steps-wrap{background:var(--white);border-top:1px solid var(--border)}
+.steps-inner{max-width:960px;margin:0 auto;padding:72px 60px}
+.step{display:flex;gap:36px;padding:32px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.step:last-child{border-bottom:none}
+.s-num{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:700;color:var(--orange);line-height:1;flex-shrink:0;width:52px}
+.step h3{font-size:15px;font-weight:500;color:var(--black);margin-bottom:6px}
+.step p{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* FINAL */
+.final{background:var(--black);padding:100px 60px;text-align:center;border-top:1px solid #1a1a1a}
+.final .eyebrow{color:rgba(232,114,42,0.6)}
+.final h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:600;color:var(--white);line-height:1.08;margin:18px 0 20px}
+.final h2 em{font-style:italic;color:var(--orange-light)}
+.final p{font-size:15px;color:rgba(255,255,255,0.4);max-width:440px;margin:0 auto 40px;line-height:1.8}
+.final-note{font-size:11px;color:rgba(255,255,255,0.2);margin-top:18px}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Prepared for Teddy White · Managing Director &amp; CEO, Syntharx Technologies</div>
+    <h1>Teddy, your LinkedIn<br>is <em>leaving deals<br>on the table.</em></h1>
+    <p>Forty years building healthcare infrastructure. The decision-makers who need that expertise still can't find you — because your profile isn't built to attract them.</p>
+    <div class="score-strip">
+      <div class="score-item">
+        <div class="score-num">38</div>
+        <div class="score-label">Profile Score / 100</div>
+      </div>
+      <div class="score-item">
+        <div class="score-num">D</div>
+        <div class="score-label">Discoverability Grade</div>
+      </div>
+      <div class="score-item">
+        <div class="score-num">4</div>
+        <div class="score-label">Critical Gaps Found</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINDINGS -->
+<div class="findings-wrap">
+  <div class="findings-inner">
+    <div class="sec-head">
+      <div class="eyebrow">What we found</div>
+      <h2>Here is exactly<br><em>what we found.</em></h2>
+    </div>
+    <div class="grid-2">
+      <div class="f-card">
+        <div class="badge b-warn">Critical Gap</div>
+        <div class="f-num">1</div>
+        <h3>Headline does no work</h3>
+        <p>"Managing Director and CEO at Syntharx Technologies" tells LinkedIn's algorithm nothing about who you serve. It's a job title — not a value proposition. Invisible to anyone searching for pharmacy benefit or healthcare systems expertise.</p>
+      </div>
+      <div class="f-card">
+        <div class="badge b-warn">Critical Gap</div>
+        <div class="f-num">2</div>
+        <h3>About section wastes the opening</h3>
+        <p>The first three lines of your About are your most valuable LinkedIn real estate. A buyer decides in seconds whether to keep reading. Right now those lines contain no intent, no offer, no reason to reach out.</p>
+      </div>
+      <div class="f-card">
+        <div class="badge b-warn">High Priority</div>
+        <div class="f-num">3</div>
+        <h3>No Featured section strategy</h3>
+        <p>One pinned Syntharx post. No lead magnet, no case study, no CTA. Visitors land, find nothing compelling, and leave — with no way for you to convert them into a conversation.</p>
+      </div>
+      <div class="f-card">
+        <div class="badge b-warn">High Priority</div>
+        <div class="f-num">4</div>
+        <h3>Zero inbound content engine</h3>
+        <p>Two general posts in your recent activity. No consistent positioning around pharmacy benefit management or health systems. With 600+ connections and four decades of credibility, you have an audience that's never been given a reason to engage.</p>
+      </div>
+      <div class="f-card">
+        <div class="badge b-warn">Structural Issue</div>
+        <div class="f-num">5</div>
+        <h3>Recommendations section is empty</h3>
+        <p>No recommendations received. For a CEO with this many co-founder relationships and client outcomes, that signals a trust gap to anyone doing due diligence before reaching out.</p>
+      </div>
+      <div class="f-card">
+        <div class="badge b-ok">Strength</div>
+        <div class="f-num">6</div>
+        <h3>Experience depth is a real asset</h3>
+        <p>Exouza, IntervenRx, Cat Vang Solutions, PanSource — five ventures spanning healthcare, pharmacy, and HR software. That story isn't connected right now. Connected properly, it becomes your strongest conversion tool.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COST BAND -->
+<div class="cost-band">
+  <div class="cost-band-inner">
+    <div class="eyebrow">The real cost</div>
+    <h2>The real cost of a profile<br>that does not convert.</h2>
+    <p class="lead">Every week your LinkedIn stays as-is, the right buyers — health system operators, pharmacy benefit managers, strategic partners — land on your profile, find no clear signal, and move on.</p>
+    <div class="cost-cols">
+      <div class="cost-col">
+        <div class="dash">—</div>
+        <p>Decision-makers Google you before a call. A weak LinkedIn signals you haven't invested in your brand — and neither should they.</p>
+      </div>
+      <div class="cost-col">
+        <div class="dash">—</div>
+        <p>Posts with no strategic thread evaporate instead of building a body of expertise people discover weeks or months later.</p>
+      </div>
+      <div class="cost-col">
+        <div class="dash">—</div>
+        <p>Forty years of relationships, outcomes, and proof points exist in your head — undocumented in any format that creates new inbound.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OFFER -->
+<div class="offer-wrap">
+  <div class="sec-head" style="margin-bottom:40px">
+    <div class="eyebrow">What we would do</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;line-height:1.12;margin-top:14px;color:var(--black)">What we would build<br><em style="color:var(--orange);font-style:italic">for Teddy.</em></h2>
+  </div>
+  <div class="offer-card">
+    <div class="offer-head">
+      <div>
+        <div class="eyebrow">Recommended plan</div>
+        <div class="offer-title">Full Profile Management</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Monthly Investment</div>
+        <div class="price-num">$1,497 <span>/ mo</span></div>
+      </div>
+    </div>
+    <div class="offer-cols">
+      <div class="o-col">
+        <div class="col-label">Foundation &amp; Strategy</div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>Dedicated Account Manager</strong><p>One person owns your LinkedIn. Learns your voice, your deals, and your priorities — handles everything else.</p></div>
+        </div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>Voice DNA — Built from Your 40 Years</strong><p>We extract how you think and speak, then build a system that sounds exactly like Teddy White. Not generic healthcare content.</p></div>
+        </div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>Full LinkedIn Profile Rewrite</strong><p>Headline, About, Featured, Banner, Experience — rebuilt around pharmacy benefit management, health systems, and corporate development.</p></div>
+        </div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>Brand Positioning Foundation</strong><p>Messaging House, Rule of 1, and competitive positioning for Syntharx's market — the strategic layer underneath everything.</p></div>
+        </div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>Monthly Strategy Call</strong><p>Review what's converting and where to double down — so the strategy compounds every single month.</p></div>
+        </div>
+      </div>
+      <div class="o-col">
+        <div class="col-label">Content &amp; Outreach</div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>20–25 Posts Per Month</strong><p>Strategic content built to drive inbound conversations. Each post positions your expertise and makes reaching out feel obvious to the right buyer.</p></div>
+        </div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>20–30 Branded Designs</strong><p>Carousels and graphics that stop the scroll and get saved — not just read once and forgotten.</p></div>
+        </div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>90–100 Comments Per Day</strong><p>Strategic engagement on posts from pharmacy executives, health system operators, and corporate HR buyers — daily.</p></div>
+        </div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>Targeted ICP Outreach</strong><p>Personalised DM sequences to the exact people Syntharx serves — pharmacy benefit managers, health system execs, enterprise HR buyers.</p></div>
+        </div>
+        <div class="o-item">
+          <div class="tick"><span>✓</span></div>
+          <div><strong>Monthly Performance Report</strong><p>Profile views, connection growth, content reach, DM reply rates, and conversations started — every number that matters.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="offer-foot">
+      <div>
+        <div class="val-note"><strong>Total Deliverable Value</strong><span>$8,000+ / mo</span></div>
+        <div class="guar">120-day money-back commitment. We keep working until you win.</div>
+      </div>
+      <a class="cta" href="#">Book Your Strategy Call →</a>
+    </div>
+  </div>
+</div>
+
+<!-- REASONS -->
+<div class="reasons-wrap">
+  <div class="reasons-inner">
+    <div class="eyebrow">Three reasons</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;line-height:1.15;margin-top:14px;color:var(--black)">Healthcare founders at your level<br>cannot afford to wait.</h2>
+    <div class="r-grid">
+      <div class="r-card">
+        <div class="r-num">01</div>
+        <h3>Relationships are transitioning</h3>
+        <p>The buyers and partners you've known for decades are retiring. The next generation finds vendors on LinkedIn — not through a rolodex. If you're not visible to them, someone who is will fill that gap.</p>
+      </div>
+      <div class="r-card">
+        <div class="r-num">02</div>
+        <h3>Credibility compounds monthly</h3>
+        <p>Every month with a strong content strategy, you're building an audience that compounds. Every month without, you're ceding ground to health tech founders who are posting consistently.</p>
+      </div>
+      <div class="r-card">
+        <div class="r-num">03</div>
+        <h3>Your proof points are time-sensitive</h3>
+        <p>Transformational Pharmacy Management, multi-venture exits, corporate development at scale — these stories are most powerful now. Waiting turns them into history instead of pipeline.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS -->
+<div class="steps-wrap">
+  <div class="steps-inner">
+    <div class="eyebrow">What happens next</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;line-height:1.15;margin-top:14px;color:var(--black);margin-bottom:0">Three steps from invisible to inbound.</h2>
+    <div class="step" style="padding-top:40px">
+      <div class="s-num">1</div>
+      <div>
+        <h3>Book a 30-minute Strategy Call</h3>
+        <p>We map exactly what Syntharx needs from LinkedIn — partnerships, enterprise clients, or strategic investors — and align every deliverable to that outcome before anything goes live.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="s-num">2</div>
+      <div>
+        <h3>We build your foundation in week one</h3>
+        <p>Voice DNA extraction, full profile rewrite, brand positioning. Everything needed to represent Teddy White correctly on LinkedIn — before a single post goes out.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="s-num">3</div>
+      <div>
+        <h3>You start receiving inbound. We keep optimising.</h3>
+        <p>Content goes live, outreach begins, your account manager monitors and adjusts every month. Your only job is to take the calls.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL -->
+<div class="final">
+  <div class="eyebrow">Forty years of expertise</div>
+  <h2>Your LinkedIn should be<br><em>bringing you clients.</em></h2>
+  <p>The deals are out there. The buyers exist. The only thing missing is a LinkedIn that puts Teddy White in front of them every single day.</p>
+  <a class="cta" href="#" style="font-size:11px">Book Your Strategy Call →</a>
+  <div class="final-note">No commitment required for the call. Spots are limited.</div>
+</div>
+
+</body>
+</html>
